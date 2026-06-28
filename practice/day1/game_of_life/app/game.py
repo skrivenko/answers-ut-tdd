@@ -3,7 +3,11 @@ class Game:
         self.alive_cells = cells
 
     def next_generation(self) -> None:
-        self.alive_cells = []
+        survived_cells = []
+        for cell in self.alive_cells:
+            if cell.count_neighbors(self.alive_cells) == 2:
+               survived_cells.append(cell)
+        self.alive_cells = survived_cells
     
     def __eq__(self, other) -> bool:
         if not isinstance(other, Game):
