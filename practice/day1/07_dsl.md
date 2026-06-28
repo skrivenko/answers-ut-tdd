@@ -80,7 +80,7 @@ def test_three_neighbors_cell_borns():
 **Примеры:**
   
 - Create. подскажет какие сущности есть в вашем домене
-- Create.Entity() создаст билдер 
+- Create.Entity() создаст билдер для сущности
 - Create.Entity().with_smth().with_smth_else() подскажет как можно параметризовать сущность в билдере
 - Create.Entity().please() вернет сущность из билдера
 
