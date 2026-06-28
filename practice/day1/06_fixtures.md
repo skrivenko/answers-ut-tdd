@@ -8,5 +8,5 @@
 **Ответ:**
 
 - [Код фикстур](/practice/day1/dices/tests/conftest.py)
-- [Код теста](/practice/day1/dices/tests/test_dices_fixtures.py)
+- [Код теста](/practice/day1/dices/tests/test_dices_game_fixtures.py)
   
