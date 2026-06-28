@@ -5,7 +5,8 @@ class Game:
     def next_generation(self) -> None:
         survived_cells = []
         for cell in self.alive_cells:
-            if cell.count_neighbors(self.alive_cells) == 2:
+            neighbours_count = cell.count_neighbors(self.alive_cells)
+            if neighbours_count == 2 or neighbours_count == 3:
                survived_cells.append(cell)
         self.alive_cells = survived_cells
     

@@ -16,6 +16,26 @@ def test_lonely_cell_dies():
 
 
 def test_two_neighbours_cell_survives():
-    game = Create.game().with_cell(1,1).with_cell(2,2).with_cell(3,3).please()
+    game = (Create.game()
+            .with_cell(1,1)
+            .with_cell(2,2)
+            .with_cell(3,3)
+            .please())
     game.next_generation()
     assert game ==  Create.game().with_cell(2,2).please()
+
+
+def test_three_neighbours_cell_survives():
+    game = (Create.game()
+            .with_cell(1,1)
+            .with_cell(1,2)
+            .with_cell(2,1)
+            .with_cell(2,2)
+            .please())
+    game.next_generation()
+    assert game ==  (Create.game()
+            .with_cell(1,1)
+            .with_cell(1,2)
+            .with_cell(2,1)
+            .with_cell(2,2)
+            .please())
