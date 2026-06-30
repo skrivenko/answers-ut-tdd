@@ -3,7 +3,7 @@ from app import *
 from app.Exceptions.invalid_operation_exception import InvalidOperationException
 from app.Exceptions.too_many_players_exception import TooManyPlayersException
 
-// TODO: нужны ответы без приват функций
+
 def test_player_is_in_game_when_he_joined_game():
     player = player_joined_game()
 
