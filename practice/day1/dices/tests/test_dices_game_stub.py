@@ -23,7 +23,7 @@ def test_player_wins_when_he_played_winning_score(monkeypatch):
     assert player_has_exactly_chips(player, Chip(2 + 3*6))
 
 
-### private functions to set up test data
+### private functions to set up test data and to assert
 
 def player_with_five_chips() -> player:
     player = Player()  
