@@ -1,7 +1,6 @@
 from mockito import mock, times, verify, when, ANY
 
 from app import *
-from tests.test_dice_game import player_has_exactly_chips
 
 
 # test for behavior 
