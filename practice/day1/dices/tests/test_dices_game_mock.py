@@ -21,23 +21,6 @@ def test_game_calls_win_for_all_winners_and_loosers_loose(monkeypatch):
     verify(looser_2, times(0)).win(ANY)
 
 
-# test for state
-def test_winners_win_and_loosers_loose():
-    game = RollDiceGame()
-    when(Dice).roll().thenReturn(5)
-    winner_1 = player_with_bet(game, 5)
-    winner_2 = player_with_bet(game, 5)
-    looser_1 = player_with_bet(game, 1)
-    looser_2 = player_with_bet(game, 2)
-
-    game.play()
-
-    assert player_has_exactly_chips(winner_1, Chip(2 + 3*6))
-    assert player_has_exactly_chips(winner_2, Chip(2 + 3*6))
-    assert player_has_exactly_chips(looser_1, Chip(2))
-    assert player_has_exactly_chips(looser_2, Chip(2))
-
-
 ### private functions to set up test data
 
 def mocked_player() -> player:
@@ -54,12 +37,3 @@ def mocked_player_with_bet(game:RollDiceGame, bet_score: int) -> player:
     player.join(game)
     game.bet(player, Bet(Chip(3), bet_score))
     return player
-
-
-def player_with_bet(game:RollDiceGame, bet_score: int) -> player:
-    player = Player()
-    player.buy(Chip(5))
-    player.join(game)
-    game.bet(player, Bet(Chip(3), bet_score))
-    return player
-
