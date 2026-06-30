@@ -22,3 +22,6 @@ def test_player_wins_when_he_played_winning_score(monkeypatch):
     game.play()
 
     assert player_has_exactly_chips(player, Chip(2 + 3*6))
+
+
+/// TODO: реализация приват функций
