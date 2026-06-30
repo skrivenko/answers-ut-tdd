@@ -70,7 +70,7 @@ def test_player_looses_when_he_played_non_existing_score():
     assert player_has_exactly_chips(player, Chip(2))
 
 
-### private functions to set up test data
+### private functions to set up test data and to assert
 
 def player_joined_game() -> player:
     game = RollDiceGame()
@@ -89,10 +89,6 @@ def player_with_five_chips() -> player:
     return player
 
 
-def player_has_exactly_chips(player: Player, chips: Chip) -> bool:
-    return player.has(chips) and not player.has(chips + Chip(1))   
-
-
 def game_with_player(player: Player) -> roll_dice_game:
     game = RollDiceGame()
     player.join(game)
@@ -105,3 +101,8 @@ def game_with_six_players() -> roll_dice_game:
         player = Player() 
         player.join(game) 
     return game
+
+
+def player_has_exactly_chips(player: Player, chips: Chip) -> bool:
+    return player.has(chips) and not player.has(chips + Chip(1))   
+
