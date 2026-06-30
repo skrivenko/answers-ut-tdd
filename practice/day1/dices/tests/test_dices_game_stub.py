@@ -1,5 +1,4 @@
 from app import *
-from tests.test_dice_game import game_with_player, player_has_exactly_chips, player_with_five_chips
 
 
 def test_player_looses_when_he_played_non_winning_score(monkeypatch):
@@ -24,4 +23,22 @@ def test_player_wins_when_he_played_winning_score(monkeypatch):
     assert player_has_exactly_chips(player, Chip(2 + 3*6))
 
 
-/// TODO: реализация приват функций
+### private functions to set up test data
+
+def player_with_five_chips() -> player:
+    player = Player()  
+    player.buy(Chip(5))
+    return player
+
+
+def game_with_player(player: Player) -> roll_dice_game:
+    game = RollDiceGame()
+    player.join(game)
+    return game
+    
+
+def player_has_exactly_chips(player: Player, chips: Chip) -> bool:
+    return player.has(chips) and not player.has(chips + Chip(1))   
+
+
+
