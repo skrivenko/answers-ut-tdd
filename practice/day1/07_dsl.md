@@ -39,10 +39,48 @@
 | CA | 8,25% |
    
 ### Тесты на кассовый чек
-  
-- Придумать, какие нужны тесты
+    
+Придумать, какие нужны тесты
   - Печатаем пустой чек
-- Подумать, как могут выглядеть DSL-style тесты
+  - Печатаем чек с одним товаром в количестве 1 шт и ценой меньше 1000
+  - Печатаем чек для одного товара в количестве нескольких штук и суммой меньше 1000
+  - Печатаем чек для нескольких товаров по несколько штук и суммой меньше 1000
+  - Печатаем чек с суммой 2000 для скидки в 3%
+  - ...
+  - Печатаем чек для штата UT с ненулевой скидкой
+  - ...
+  
+Подумать, как могут выглядеть DSL-style тесты
+
+#### Пример без DSL
+
+```python
+order = Order()
+order.add_line_item(
+    "Laptop",
+    2,
+    Rub(45000.00),
+)
+order.add_line_item(
+    "Mouse",
+    3,
+    Rub(1500.00),
+)
+order.set_state("NV")
+receipt = order.get_receipt()
+
+assert receipt.total() == Rub(86751.00)
+```
+
+#### Пример DSL
+```python
+receipt = Create.receipt().for_order(
+    Create.order_line_item(2, "Laptop").with_price(Rub(45000.00)).please(),
+    Create.order_line_item(3, "Mouse").with_price(Rub(1500.00)).please(),
+).in_state("NV").please()
+
+assert receipt.total() == Rub(86751.00)
+```
 
 
 ## Практика Dices
