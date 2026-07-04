@@ -22,3 +22,9 @@ def test_add_invalid_format_raises_error():
     with pytest.raises(ValueError) as exc_info:
         add("175.2,\n35")
     assert "Ожидается число, но в позиции 6 найдено '\\n'" in str(exc_info.value)
+
+
+def test_add_invalid_separator_at_different_position():
+    with pytest.raises(ValueError) as exc_info:
+        add("1,2,,3")
+    assert "Ожидается число, но в позиции 4 найдено ','" in str(exc_info.value)
