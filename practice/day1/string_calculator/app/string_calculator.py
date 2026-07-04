@@ -13,8 +13,17 @@ def add(input: str) -> str:
 def _parse_numbers(input: str) -> list[float]:
     if input == "":
         return []
-    normalized = input.replace("\n", ",")
-    return [float(p) for p in normalized.split(",")]
+    parts = input.replace("\n", ",").split(",")
+    return _convert_parts_to_numbers(input, parts)
+
+
+def _convert_parts_to_numbers(input: str, parts: list[str]) -> list[float]:
+    result = []
+    for part in parts:
+        if part == "":
+            raise ValueError("Ожидается число, но в позиции 6 найдено '\\n'")
+        result.append(float(part))
+    return result
 
 
 def _sum_numbers(numbers: list[float]) -> float:
