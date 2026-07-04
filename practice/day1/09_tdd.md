@@ -37,4 +37,4 @@ def add(number: str) -> str:
 
 **Ответ:**
 
-[Код Game of Life](/practice/day1/string_calculator/)
+[Код и тесты для String Calculator](/practice/day1/string_calculator/)
