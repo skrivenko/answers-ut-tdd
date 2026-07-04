@@ -16,3 +16,9 @@ def test_add_two_numbers_returns_sum():
 
 def test_add_newline_as_separator():
     assert add("1\n2,3") == "6"
+
+
+def test_add_invalid_format_raises_error():
+    with pytest.raises(ValueError) as exc_info:
+        add("175.2,\n35")
+    assert "Ожидается число, но в позиции 6 найдено '\\n'" in str(exc_info.value)
