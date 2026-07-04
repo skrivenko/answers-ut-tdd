@@ -2,20 +2,24 @@ class StringCalculator:
     pass
 
 
-def add(number: str) -> str:
-    numbers = _parse_numbers(number)
+def add(input: str) -> str:
+    numbers = _parse_numbers(input)
     if not numbers:
         return "0"
     result = _sum_numbers(numbers)
-    return f"{result:g}"
+    return _format_result(result)
 
 
-def _parse_numbers(number: str) -> list[float]:
-    if number == "":
+def _parse_numbers(input: str) -> list[float]:
+    if input == "":
         return []
-    return [float(p) for p in number.split(",")]
+    normalized = input.replace("\n", ",")
+    return [float(p) for p in normalized.split(",")]
 
 
 def _sum_numbers(numbers: list[float]) -> float:
     return sum(numbers)
 
+
+def _format_result(result: float) -> str:
+    return f"{result:g}"
