@@ -28,3 +28,9 @@ def test_add_invalid_separator_at_different_position():
     with pytest.raises(ValueError) as exc_info:
         add("1,2,,3")
     assert "Ожидается число, но в позиции 4 найдено ','" in str(exc_info.value)
+
+
+def test_add_trailing_separator_raises_eof_error():
+    with pytest.raises(ValueError) as exc_info:
+        add("1,3,")
+    assert "Ожидается число, но найдено EOF" in str(exc_info.value)
