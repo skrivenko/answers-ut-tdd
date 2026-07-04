@@ -29,6 +29,8 @@ def _convert_parts_to_numbers(input: str, parts: list[str]) -> list[float]:
 
 def _validate_part(input: str, part: str, pos: int) -> None:
     if part == "":
+        if pos >= len(input):
+            raise ValueError("Ожидается число, но найдено EOF")
         char = _get_char_at_position(input, pos)
         raise ValueError(f"Ожидается число, но в позиции {pos} найдено '{char}'")
 
