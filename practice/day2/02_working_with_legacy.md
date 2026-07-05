@@ -19,7 +19,7 @@
   
 **Ответ:**
   
-[Код теста](/practice/day2/gilded-rose/tests/test_characterization.py)
+[Код теста](/practice/day2/gilded_rose/tests/test_characterization.py)
     
   
 ## Практика про Golden Master тест
@@ -27,4 +27,4 @@
 
 **Ответ:**
   
-[Код теста](/practice/day2/gilded-rose/tests/test_golden_master.py)
+[Код теста](/practice/day2/gilded_rose/tests/test_golden_master.py)
