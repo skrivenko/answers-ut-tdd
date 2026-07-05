@@ -5,4 +5,5 @@ class StringCalculator:
         if input == "":
             return "0"
         numbers = input.split(",")
-        return str(sum(int(n) for n in numbers))
+        total = sum(float(n) for n in numbers)
+        return f"{total:g}"

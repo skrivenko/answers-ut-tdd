@@ -17,3 +17,9 @@ def test_add_two_numbers_returns_sum():
     calculator = StringCalculator()
     result = calculator.add("1,2")
     assert result == "3"
+
+
+def test_add_three_float_numbers_returns_sum():
+    calculator = StringCalculator()
+    result = calculator.add("1.1,2.2,3.3")
+    assert result == "6.6"
