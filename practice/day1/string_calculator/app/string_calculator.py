@@ -14,6 +14,8 @@ class StringCalculator:
         for i, char in enumerate(input):
             if i > 0 and self._is_delimiter(input[i-1]) and self._is_delimiter(char):
                 raise ValueError(f"Ожидается число, но в позиции {i} найдено '{repr(char)[1:-1]}'")
+        if input and self._is_delimiter(input[-1]):
+            raise ValueError("Ожидается число, но найдено EOF")
 
     
     def _is_delimiter(self, char):
