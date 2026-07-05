@@ -2,9 +2,9 @@ import pytest
 from app import *
 from app.Exceptions.invalid_operation_exception import InvalidOperationException
 from app.Exceptions.too_many_players_exception import TooManyPlayersException
-from tests.create_builder import Create
-from tests.create_game import CreateGame
-from tests.create_player import CreatePlayer
+from tests.builders.create import Create
+from tests.builders.create_game import CreateGame
+from tests.builders.create_player import CreatePlayer
 
 
 def test_player_is_in_game_when_he_joined_game():
