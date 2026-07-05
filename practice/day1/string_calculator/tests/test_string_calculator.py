@@ -13,3 +13,11 @@ def test_string_calculator_add(input, expected, description):
     calculator = StringCalculator()
     result = calculator.add(input)
     assert result == expected, description
+
+
+def test_add_invalid_newline_position_raises_error():
+    calculator = StringCalculator()
+    import pytest
+    with pytest.raises(ValueError) as exc_info:
+        calculator.add("175.2,\n35")
+    assert str(exc_info.value) == r"Ожидается число, но в позиции 6 найдено '\n'"

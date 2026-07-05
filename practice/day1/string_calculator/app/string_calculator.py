@@ -10,6 +10,9 @@ class StringCalculator:
 
     
     def _parse_numbers(self, input):
+        for i, char in enumerate(input):
+            if char == '\n' and i > 0 and input[i-1] == ',':
+                raise ValueError(f"Ожидается число, но в позиции {i} найдено '\\n'")
         input = input.replace("\n", ",")
         return input.split(",")
 
