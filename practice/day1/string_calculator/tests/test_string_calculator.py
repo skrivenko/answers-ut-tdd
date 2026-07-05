@@ -15,9 +15,12 @@ def test_string_calculator_add(input, expected, description):
     assert result == expected, description
 
 
-def test_add_invalid_newline_position_raises_error():
+@pytest.mark.parametrize("input,expected_error,description", [
+    ("175.2,\n35", r"Ожидается число, но в позиции 6 найдено '\n'", "newline right after comma"),
+    ("1,2\n,3", r"Ожидается число, но в позиции 4 найдено ','", "comma right after newline"),
+])
+def test_string_calculator_add_raises_error(input, expected_error, description):
     calculator = StringCalculator()
-    import pytest
     with pytest.raises(ValueError) as exc_info:
-        calculator.add("175.2,\n35")
-    assert str(exc_info.value) == r"Ожидается число, но в позиции 6 найдено '\n'"
+        calculator.add(input)
+    assert str(exc_info.value) == expected_error, description
