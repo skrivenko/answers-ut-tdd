@@ -19,8 +19,8 @@
   
 **Ответ:**
   
-[Код теста](/practice/day2/gilded_rose/tests/test_characterization.py)
-    
+- [Код теста](/practice/day2/gilded_rose/tests/test_characterization.py)
+- [Код параметризованного теста](/practice/day2/gilded_rose/tests/test_parametrized_characterization.py)
   
 ## Практика про Golden Master тест
 Написать Golden Master тест на Gilded Rose.
