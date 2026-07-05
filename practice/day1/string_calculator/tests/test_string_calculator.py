@@ -3,11 +3,12 @@ from app.string_calculator import StringCalculator
 
 
 @pytest.mark.parametrize("input,expected,description", [
-    ("", "0", "empty_string_returns_zero"),
-    ("1", "1", "single_number_returns_itself"),
-    ("1,2", "3", "two_numbers_return_sum"),
-    ("1.1,2.2,3.3", "6.6", "three_float_numbers_return_sum"),
-], ids=["empty_string_returns_zero", "single_number_returns_itself", "two_numbers_return_sum", "three_float_numbers_return_sum"])
+    ("", "0", "empty string returns zero"),
+    ("1", "1", "single number returns itself"),
+    ("1,2", "3", "two numbers return sum"),
+    ("1.1,2.2,3.3", "6.6", "three float numbers return sum"),
+    ("1\n2,3", "6", "newline and comma delimiters"),
+])
 def test_string_calculator_add(input, expected, description):
     calculator = StringCalculator()
     result = calculator.add(input)
