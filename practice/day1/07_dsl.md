@@ -41,6 +41,7 @@
 ### Тесты на кассовый чек
     
 Придумать, какие нужны тесты
+  - Создаем пустой заказ. Проверяем что total 
   - Печатаем пустой чек
   - Печатаем чек с одним товаром в количестве 1 шт и ценой меньше 1000
   - Печатаем чек для одного товара в количестве нескольких штук и суммой меньше 1000
@@ -67,19 +68,20 @@ order.add_line_item(
     Rub(1500.00),
 )
 order.set_state("NV")
-receipt = order.get_receipt()
 
-assert receipt.total() == Rub(86751.00)
+receipt = order.create_receipt(ReceiptFormatter())
+
+assert receipt == EXPECTED_RECEIPT
 ```
 
 #### Пример DSL
 ```python
-receipt = Create.receipt().for_order(
+receipt = Create.receipt().with_formatter(ReceiptFormatter()).for_order(
     Create.order_line_item(2, "Laptop").with_price(Rub(45000.00)).please(),
     Create.order_line_item(3, "Mouse").with_price(Rub(1500.00)).please(),
 ).in_state("NV").please()
 
-assert receipt.total() == Rub(86751.00)
+assert receipt == EXPECTED_RECEIPT
 ```
 
 
